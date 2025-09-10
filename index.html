@@ -13,7 +13,7 @@ h1 { font-size:24px; margin:0;}
 .buttons { margin-top:20px;}
 button { padding:10px 20px; margin:5px; font-size:16px; cursor:pointer; border:none; border-radius:5px; background-color:#007bff; color:white; transition:0.3s;}
 button:hover { background-color:#0056b3;}
-.prediction { margin-top:20px; padding:15px; background-color:#e9ecef; border-radius:5px; font-size:18px; min-height:60px; text-align:left; white-space:pre-line;}
+.prediction { margin-top:20px; padding:15px; background-color:#e9ecef; border-radius:5px; font-size:18px; min-height:60px; text-align:left;}
 body.dark-mode { background-color:#121212; color:#e0e0e0;}
 body.dark-mode .container { background-color:#1e1e1e; }
 body.dark-mode .buttons button { background-color:#444; }
@@ -46,8 +46,9 @@ const predictions = {
 
 function predict(level){
   const arr = predictions[level];
-  let text = arr.map((num,i)=>`Stage ${i+1}: x${num} 🐔`).join("\n");
-  document.getElementById('prediction').innerText = text;
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  const randomNumber = arr[randomIndex];
+  document.getElementById('prediction').innerText = `Stage ${randomIndex+1}: x${randomNumber} 🐔`;
 }
 
 // Dark/light mode toggle
